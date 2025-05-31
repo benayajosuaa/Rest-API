@@ -1,27 +1,26 @@
-// CONTOH KASUS UNTUK ROUTER LOGIN DAN REGISTER
-// ---------------------------------------------
+import {Router, Request, Response, NextFunction} from 'express';
 
-
-
-// disini pembagian router dari suatu module API yang kompleks
-// segala sesuatu router autentikasi akan masuk ke file ini
-
-// disini itu seolah-olah membuat express ke2
-// maka dia pembuatannya mirip
-
-import {Router, Request, Response} from 'express';
-
-// tidak ada import "const app : Application = express();"
 const router = Router();
 
-// router untuk LOGIN
 router.post("/login", (req: Request, res: Response)=> {
     res.status(200).send("ini kamu masuk ke router login")
 })
 
-// router untuk REGISTER
 router.post("/register", (req: Request, res: Response)=> {
     res.status(200).send("ini kamu masuk ke router register")
 })
+
+
+// sambungan error handling middleware untuk case Autentikasi
+// CONTOH :
+// router.post("/register", (req: Request, res:Response, next : NextFunction) => {
+//     try {
+//         throw new Error ("text error");
+//     } catch (err){
+//         next(err);
+//     }
+// })
+
+
 
 export default router;
